@@ -1,0 +1,74 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.backend
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./backend/models:/app/models
+      - ./backend/data:/app/data
+      - ./logs:/app/logs
+    environment:
+      - FLASK_ENV=production
+      - DATABASE_URL=postgresql://math_user:math_password@db:5432/math_mentor_db
+      - SECRET_KEY=your-super-secret-random-key-here
+      - MODEL_PATH=models/math_mentor_model.h5
+      - TRAINING_DATA_PATH=data/training_data/
+      - LOG_LEVEL=INFO
+      - FRONTEND_URL=http://localhost:80
+    depends_on:
+      - db
+    restart: unless-stopped
+    networks:
+      - math-mentor-network
+
+  frontend:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - math-mentor-network
+
+  db:
+    image: postgres:13
+    environment:
+      POSTGRES_DB: math_mentor_db
+      POSTGRES_USER: math_user
+      POSTGRES_PASSWORD: math_password
+      PGDATA: /var/lib/postgresql/data/pgdata
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - math-mentor-network
+    restart: unless-stopped
+
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "443:443"
+      - "80:80"
+    volumes:
+      - ./docker/nginx.conf:/etc/nginx/nginx.conf
+      - ./docker/ssl:/etc/nginx/ssl
+    depends_on:
+      - frontend
+      - backend
+    networks:
+      - math-mentor-network
+    restart: unless-stopped
+
+networks:
+  math-mentor-network:
+    driver: bridge
+
+volumes:
+  postgres_data:

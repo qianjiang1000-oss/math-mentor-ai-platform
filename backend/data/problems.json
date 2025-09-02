@@ -1,0 +1,70 @@
+[
+  {
+    "title": "Linear Equation Solution",
+    "description": "Solve for x: 2x + 5 = 15",
+    "difficulty": "Beginner",
+    "topic": "Algebra",
+    "solution_steps": [
+      "Subtract 5 from both sides: 2x = 10",
+      "Divide both sides by 2: x = 5"
+    ],
+    "final_answer": "x = 5",
+    "mathematical_concepts": ["algebra", "linear equations"]
+  },
+  {
+    "title": "Quadratic Equation",
+    "description": "Solve the quadratic equation: x² - 5x + 6 = 0",
+    "difficulty": "Intermediate",
+    "topic": "Algebra",
+    "solution_steps": [
+      "Factor the equation: (x-2)(x-3) = 0",
+      "Set each factor equal to zero: x-2=0 or x-3=0",
+      "Solve for x: x=2 or x=3"
+    ],
+    "final_answer": "x = 2 or x = 3",
+    "mathematical_concepts": ["algebra", "quadratic equations"]
+  },
+  {
+    "title": "Circle Area Calculation",
+    "description": "Find the area of a circle with radius 7 units",
+    "difficulty": "Beginner",
+    "topic": "Geometry",
+    "solution_steps": [
+      "Use the area formula: A = πr²",
+      "Substitute r = 7: A = π(7)²",
+      "Calculate: A = 49π",
+      "Approximate: A ≈ 153.94 square units"
+    ],
+    "final_answer": "A = 49π ≈ 153.94 square units",
+    "mathematical_concepts": ["geometry", "circle", "area"]
+  },
+  {
+    "title": "Derivative Calculation",
+    "description": "Find the derivative of f(x) = 3x² + 2x - 5",
+    "difficulty": "Intermediate",
+    "topic": "Calculus",
+    "solution_steps": [
+      "Apply power rule to each term",
+      "Derivative of 3x² is 6x",
+      "Derivative of 2x is 2",
+      "Derivative of constant -5 is 0",
+      "Combine results: f'(x) = 6x + 2"
+    ],
+    "final_answer": "f'(x) = 6x + 2",
+    "mathematical_concepts": ["calculus", "derivatives"]
+  },
+  {
+    "title": "Probability Calculation",
+    "description": "What is the probability of rolling a sum of 7 with two fair six-sided dice?",
+    "difficulty": "Intermediate",
+    "topic": "Probability",
+    "solution_steps": [
+      "Total possible outcomes: 6 × 6 = 36",
+      "Favorable outcomes for sum 7: (1,6), (2,5), (3,4), (4,3), (5,2), (6,1) = 6 outcomes",
+      "Probability = favorable outcomes / total outcomes = 6/36",
+      "Simplify: 1/6"
+    ],
+    "final_answer": "1/6",
+    "mathematical_concepts": ["probability", "statistics"]
+  }
+]
